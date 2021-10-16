@@ -10,11 +10,18 @@ mongoose.connect('mongodb+srv://admin:password12345@contacty.ldc9f.mongodb.net/c
     useNewUrlParser: true,
 });
 
-app.get('/', async (req, res)=>{
+app.post('/insert', async (req, res)=>{
+
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+
+
+
     const contact = new ContactModel({
-        contactFirstname: "Atoke", 
-        contactLastname : "Libun",
-        contactEmail : "a.Lib@gmai.com"
+        contactFirstname: firstName, 
+        contactLastname : lastName,
+        contactEmail : email,
     });
 
     res.send("Success");
