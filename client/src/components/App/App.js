@@ -2,52 +2,65 @@ import React, { useState } from "react";
 import Axios from "axios";
 import "./App.css";
 
-export const App=() => {
+require('dotenv').config();
 
-  const[ firstName, setFirstName] = useState("");
-  const[ lastName, setLastName] = useState("");
-  const[ email, setEmail] = useState("");
+export const App = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
 
-const addToList = () => {
-  Axios.post("http://localhost:3001/insert",{
-      firstName:firstName,
+  const port = process.env.REACT_APP_PORT || 5000 ;
+
+
+  const addToList = () => {
+    Axios.post(`http://localhost:${port}/insert`, {
+      firstName: firstName,
       lastName: lastName,
-      email:email,
-  });
-};
+      email: email,
+    });
+  };
 
   return (
-    <div className="App"> 
+    <div className="App">
       <h1>Contact App</h1>
 
       <div className="formElement">
         <label name="firstName">First name</label>
-        <input type="text" id="fname" required onChange={(event)=>{
-          setFirstName(event.target.value)
-        }} />
+        <input
+          type="text"
+          id="fname"
+          required
+          onChange={(event) => {
+            setFirstName(event.target.value);
+          }}
+        />
       </div>
 
       <div className="formElement">
         <label name="lastName">Last name</label>
-        <input type="text" id="lname" onChange={(event)=>{
-          setLastName(event.target.value)
-        }} />
+        <input
+          type="text"
+          id="lname"
+          onChange={(event) => {
+            setLastName(event.target.value);
+          }}
+        />
       </div>
 
       <div className="formElement">
         <label name="email">Email Address</label>
-        <input type="email" id="email" required onChange={(event)=>{
-          setEmail(event.target.value)
-        }} />
+        <input
+          type="email"
+          id="email"
+          required
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
       </div>
 
-      <button onClick={addToList} >Save contact</button>
+      <button onClick={addToList}>Save contact</button>
       <a href="/contact">View Contact</a>
-        
-
-      
     </div>
   );
-}
-
-
+};
