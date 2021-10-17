@@ -11,7 +11,7 @@ export const ContactList= () =>{
 
     useEffect(()=>{
         Axios.get(`http://localhost:${port}/read`).then(   (response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 setContactList(response.data)
             });
     }, []);
@@ -23,7 +23,7 @@ export const ContactList= () =>{
             <div className="spacer"></div>
 
             {contactList.map((val, key) => {
-                return <div className="contactBox"> 
+                return <div className="contactBox" key={val._id}> 
                             <h6> Firstname: {val.contactFirstname} </h6>
                             <h6> Lastname: {val.contactLastname} </h6>
                             <h6> Email: {val.contactEmail}</h6>
