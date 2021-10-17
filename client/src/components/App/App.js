@@ -18,7 +18,10 @@ export const App = () => {
       lastName: lastName,
       email: email,
     });
+    alert("Saved: contact has been added to contact list")
   };
+
+ 
 
   return (
     <div className="App">
