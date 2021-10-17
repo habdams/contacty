@@ -19,8 +19,8 @@ export const ContactList= () =>{
     return(
         <div>
             <h1>Contact List</h1> 
-            <p>[Saved contacts display here]</p> 
             <a href="/">Add new contact</a>
+            <div className="spacer"></div>
 
             {contactList.map((val, key) => {
                 return <div className="contactBox"> 
